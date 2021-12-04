@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `wxp_failed_jobs`
 --
-
+ 
 DROP TABLE IF EXISTS `wxp_failed_jobs`;
 CREATE TABLE `wxp_failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
