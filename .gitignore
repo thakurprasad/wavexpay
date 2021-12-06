@@ -8,6 +8,7 @@
 /public/fonts
 /public/vendors
 /public/json
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /materialize-shell-scripts
@@ -20,6 +21,8 @@ npm-debug.log
 yarn-error.log
 supervisord.log
 supervisord.pid
+composer.lock
+package-lock.json
 #====================
 
 /vendor/
