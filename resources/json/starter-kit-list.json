@@ -11,6 +11,18 @@
       "name": "Page Collapse",
       "icon": "pages",
       "category": "Collapse Page"
+    },
+    {
+      "url": "page-collapse2",
+      "name": "Page Collapse2",
+      "icon": "pages",
+      "category": "Collapse Page"
+    },
+    {
+      "url": "page-collapse3",
+      "name": "Page Collapse3",
+      "icon": "pages",
+      "category": "Collapse Page3"
     }
   ]
 }

@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LanguageController;
 
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +22,9 @@ use App\Http\Controllers\LanguageController;
 // Route::get('/', [PageController::class, 'blankPage'])->middleware('verified');
 Route::get('/', [PageController::class, 'blankPage']);
 
+
+
+
 Route::get('/page-blank', [PageController::class, 'blankPage']);
 Route::get('/page-collapse', [PageController::class, 'collapsePage']);
 
@@ -26,3 +32,34 @@ Route::get('/page-collapse', [PageController::class, 'collapsePage']);
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 Auth::routes(['verify' => true]);
+
+Route::group(['middleware' => ['auth']], function() {
+    /**
+     * Role 
+     * GET: roles, roles/create, roles/{id}/edit
+     * */
+    Route::resource('roles', RoleController::class);
+    /*Route::group(['prefix'=>'/roles'], function() {
+        Route::get('/', [RoleController::class, 'index']);
+        Route::get('/create', [RoleController::class, 'create']);
+        Route::post('/add', [RoleController::class, 'add']);
+        Route::get('/edit/{id}', [RoleController::class, 'edit']);
+        Route::post('/update/{id}', [RoleController::class, 'update']);
+    });*/
+
+    /**
+     * Users
+     * 
+     * */
+    Route::resource('users', UserController::class);
+    Route::get('users/list',  [UserController::class, 'index'] );
+    /* Route::group(['prefix'=>'/users'], function() {
+        Route::get('/index', [UserController::class, 'index']);
+        Route::get('/create', [UserController::class, 'create']);
+        Route::post('/add', [UserController::class, 'add']);
+        Route::get('/edit/{id}', [UserController::class, 'edit']);
+        Route::post('/update/{id}', [UserController::class, 'update']);
+    }); */
+
+
+});
