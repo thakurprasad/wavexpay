@@ -23,4 +23,14 @@ class PageController extends Controller
 
         return view('pages.page-collapse', ['pageConfigs' => $pageConfigs], ['breadcrumbs' => $breadcrumbs]);
     }
+
+    public function merchantProfile()
+    {
+        $breadcrumbs = [
+            ['link' => "/", 'name' => "Home"], ['link' => "javascript:void(0)", 'name' => "Pages"], ['name' => "User Profile"],
+        ];
+        //Pageheader set true for breadcrumbs
+        $pageConfigs = ['pageHeader' => true];
+        return view('pages.merchant-profile', ['pageConfigs' => $pageConfigs], ['breadcrumbs' => $breadcrumbs]);
+    }
 }

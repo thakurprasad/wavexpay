@@ -21,8 +21,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/page-blank', [PageController::class, 'blankPage']);
     Route::get('/page-collapse', [PageController::class, 'collapsePage']);
+    Route::get('/merchant-profile', [PageController::class, 'merchantProfile']);
 
 // locale route
     Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 });
 Auth::routes(['verify' => true]);
+
+//Auth::routes();
