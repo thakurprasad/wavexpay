@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MenuServiceProvider::class,
+
+        /**
+         * Laravel 8 User Roles and Permissions Tutorial
+         * */
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*

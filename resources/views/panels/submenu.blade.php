@@ -1,5 +1,6 @@
 <div class="collapsible-body">
   <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+
     @foreach ($menu as $submenu)
     @php
       $custom_classes="";

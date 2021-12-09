@@ -51,6 +51,12 @@ Homestead.json
 
 #=======Other gitignore files or directorys======
 /_DATA/
+/_old/
 *.zip
 *.pdf
 *.rar
+
+
+package-lock.json
+public/mix-manifest.json
+composer.lock

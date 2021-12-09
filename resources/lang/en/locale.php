@@ -132,6 +132,33 @@ return [
     "Second level 3"=> "Second level 3",
     "Child 1"=> "Child 1",
     "Child 2"=> "Child 2",
-    "Page Collapse"=> "Page Collapse"
+    "Page Collapse"=> "Page Collapse",
+
+    // new label 
+    "Add"       => "Add",
+    "Create"    => "Create",
+    "Edit"      => "Edit",
+    "Update"    => "Update",
+    "Delete"    => "Delete",
+
+    "Name" => "Name",
+    "Mobile" => "Mobile",
+    "Mail" => "Mail", 
+    "Email" => "Email", 
+    "E-mail" => "E-mail", 
+    "Address" => "Address",
+    "Role" => "Role",
+    "Select" => "Select",
+
+    "Create An Invoice" => "Create An Invoice",
+    "Create New Invoice" => "Create New Invoice",
+    "Invoice List" => "Invoice List",
+
+    "User" => "User",
+    "Add New Users" => "Add New Users",
+    "User Lists" => "User Lists",
+    "Users" => "Users",
+    "Users" => "Users",
+
 ];
 ?>
