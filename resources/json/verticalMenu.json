@@ -2,50 +2,6 @@
   "menu": [
        {
         "url": "javascript:void(0)",
-        "name": "Users",
-        "i18n": "Pages",
-        "class": "collapsible-header waves-effect waves-cyan",
-        "slug": "users",
-        "icon": "people",
-        "submenu": [
-           {
-            "url": "users",
-            "name": "User List",
-            "i18n": "Page Blank1",
-            "slug": "page-blank"
-          },
-           {
-            "url": "users/create",
-            "name": "Add New User",
-            "i18n": "Page Blank1",
-            "slug": "page-blank"
-          }
-        ]
-    },
-       {
-        "url": "javascript:void(0)",
-        "name": "Roles",
-        "i18n": "Pages",
-        "class": "collapsible-header waves-effect waves-cyan",
-        "slug": "roles",
-        "icon": "lock",
-        "submenu": [
-           {
-            "url": "roles",
-            "name": "Role List",
-            "i18n": "Role List",
-            "slug": "role-create"
-          },
-           {
-            "url": "roles/create",
-            "name": "Add New Role",
-            "i18n": "Add New Role",
-            "slug": "role-create"
-          }
-        ]
-    },
-       {
-        "url": "javascript:void(0)",
         "name": "Invoice",
         "i18n": "Pages",
         "class": "collapsible-header waves-effect waves-cyan",
