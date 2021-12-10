@@ -23,4 +23,32 @@ class PageController extends Controller
 
         return view('pages.page-collapse', ['pageConfigs' => $pageConfigs], ['breadcrumbs' => $breadcrumbs]);
     }
+
+
+    public function invoiceList()
+    {
+        // custom body class
+        $pageConfigs = ['bodyCustomClass' => 'app-page'];
+        return view('invoices.list', ['pageConfigs' => $pageConfigs]);
+    }
+    public function invoiceView()
+    {
+        // custom body class
+        $pageConfigs = ['bodyCustomClass' => 'app-page'];
+        return view('invoices.view', ['pageConfigs' => $pageConfigs]);
+    }
+    public function invoiceEdit()
+    {
+        // custom body class
+        $pageConfigs = ['bodyCustomClass' => 'app-page'];
+        return view('invoices.edit', ['pageConfigs' => $pageConfigs]);
+    }
+    public function invoiceAdd()
+    {
+        // custom body class
+        $pageConfigs = ['bodyCustomClass' => 'app-page'];
+        return view('invoices.add', ['pageConfigs' => $pageConfigs]);
+    }
+
+
 }

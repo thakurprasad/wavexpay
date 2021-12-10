@@ -77,5 +77,6 @@ License: You must have a valid license purchased only from themeforest(the above
 {{-- page script --}}
 @section('page-script')
 <script src="{{asset('js/scripts/data-tables.js')}}"></script>
+<script src="{{asset('js/scripts/ui-alerts.js')}}"></script>
 @endsection
 </html>

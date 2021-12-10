@@ -23,6 +23,7 @@
           
         {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 
+        @include('alerts.message')
             @if (count($errors) > 0)
               <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -35,27 +36,33 @@
             @endif
 
             <div class="row">
+
               <div class="input-field col m4 s6">
                 <i class="material-icons prefix">account_circle</i>
-               {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+               {!! Form::text('name', null, array('class' => 'form-control validate')) !!}
                 <label for="name">Name</label>
+                 @error('f_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror 
               </div>
             
               <div class="input-field col m4 s6">
                 <i class="material-icons prefix">email</i>
-                 {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                 {!! Form::text('email', null, array('class' => 'form-control validate')) !!}
                  <label for="email">Email</label>
               </div>
           
               <div class="input-field col m4 s6">
                 <i class="material-icons prefix">lock</i>
-                  {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                  {!! Form::password('password', array('class' => 'form-control')) !!}
                 <label for="password">Password</label>
               </div>
            
              <div class="input-field col m4 s6">
                 <i class="material-icons prefix">lock</i>
-                  {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+                  {!! Form::password('confirm-password', array('class' => 'form-control')) !!}
                 <label for="confirm-password">Confirm Password</label>
               </div>
 

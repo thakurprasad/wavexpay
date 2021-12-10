@@ -62,4 +62,21 @@ Route::group(['middleware' => ['auth']], function() {
     }); */
 
 
+    /**
+     * testing 
+     * */
+    // User Route
+        Route::get('/page-users-list', [UserController::class, 'usersList']);
+        Route::get('/page-users-view', [UserController::class, 'usersView']);
+        Route::get('/page-users-edit', [UserController::class, 'usersEdit']);
+
+     /**
+      * Invoice 
+      * */   
+         
+    Route::get('/invoices/list', [PageController::class, 'invoiceList']);
+    Route::get('/invoices/view/{id}', [PageController::class, 'invoiceView']);
+    Route::get('/invoices/edit/{id}', [PageController::class, 'invoiceEdit']);
+    Route::get('/invoices/add', [PageController::class, 'invoiceAdd']);
+
 });

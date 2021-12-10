@@ -8,23 +8,17 @@
         "slug": "invoice",
         "icon": "pages",
         "submenu": [
-          {
-            "url": "/invoice/create",
-            "name": "Create an Invoice",
-            "i18n": "Page Blank",
-            "slug": "page-blank"
-          },
            {
-            "url": "/invoice/list",
-            "name": "Invoice List",
+            "url": "invoice/list",
+            "name": "Create New Invoice",
             "i18n": "Page Blank1",
             "slug": "page-blank"
           },
-          {
-            "url": "page-collapse",
-            "name": "Others",
-            "i18n": "Page Collapse",
-            "slug": "page-collapse"
+           {
+            "url": "invoice/list",
+            "name": "Invoice List",
+            "i18n": "Page Blank1",
+            "slug": "page-blank"
           }
         ]
     },

@@ -51,4 +51,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <h1>{{'mainLayoutType Option is empty in config custom.php file.'}}</h1>
 @endif
 
+{{-- page script --}}
+@section('page-script')
+  <script src="{{asset('js/scripts/ui-alerts.js')}}"></script>
+@endsection
 </html>

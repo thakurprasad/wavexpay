@@ -1,27 +1,5 @@
 {
   "menu": [
-       {
-        "url": "javascript:void(0)",
-        "name": "Invoice",
-        "i18n": "Pages",
-        "class": "collapsible-header waves-effect waves-cyan",
-        "slug": "invoice",
-        "icon": "pages",
-        "submenu": [
-           {
-            "url": "invoice/list",
-            "name": "Create New Invoice",
-            "i18n": "Page Blank1",
-            "slug": "page-blank"
-          },
-           {
-            "url": "invoice/list",
-            "name": "Invoice List",
-            "i18n": "Page Blank1",
-            "slug": "page-blank"
-          }
-        ]
-    },
     {
       "url": "javascript:void(0)",
       "name": "Pages",

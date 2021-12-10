@@ -2,6 +2,7 @@
  * DataTables - Tables
  */
 
+
 $(function () {
 
   // Simple Data Table

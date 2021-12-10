@@ -37,38 +37,40 @@
     data-menu="menu-navigation" data-collapsible="menu-accordion">
 
     <!---New code for menu add by T.Prasad at 09/12/2021 --->
-      <li class="{{(request()->is('users/*')) ? 'active' : '' }} bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="Dashboard">Users</span><span class="badge badge pill orange float-right mr-10">2</span></a>
+      <li class="{{(request()->is('users/*')) ? 'active' : '' }} bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">people</i><span class="menu-title" data-i18n="Dashboard">{{ __('t.Users') }}</span><span class="badge badge pill orange float-right mr-10">2</span></a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
               <li class="{{(request()->is('users/create')) ? 'active' : '' }}">
-                <a class="{{(request()->is('users/create')) ? 'active' : '' }}" href="{{ url('users/create') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">Add New User</span></a>
+                <a class="{{(request()->is('users/create')) ? 'active' : '' }}" href="{{ url('users/create') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Add New User') }}</span></a>
               </li>
               <li class="{{(request()->is('users')) ? 'active' : '' }}">
-                <a class="{{(request()->is('users')) ? 'active' : '' }}" href="{{ url('/users') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">User List</span></a>
+                <a class="{{(request()->is('users')) ? 'active' : '' }}" href="{{ url('/users') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">{{ __('t.User List') }}</span></a>
               </li>              
             </ul>
           </div>
         </li>
-        <li class="{{(request()->is('users/create')) ? 'active' : '' }} bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">lock</i><span class="menu-title" data-i18n="Dashboard">Roles</span><span class="badge badge pill orange float-right mr-10">3</span></a>
+        <li class="{{(request()->is('users/create')) ? 'active' : '' }} bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">lock</i><span class="menu-title" data-i18n="Dashboard">{{ __('t.Roles') }}</span><span class="badge badge pill orange float-right mr-10">3</span></a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li class="{{(request()->is('roles/create')) ? 'active' : '' }}"><a class="{{(request()->is('roles/create')) ? 'active' : '' }}" href="{{ url('roles/create') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">Add New Role</span></a>
+              <li class="{{(request()->is('roles/create')) ? 'active' : '' }}"><a class="{{(request()->is('roles/create')) ? 'active' : '' }}" href="{{ url('roles/create') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Add New Role') }}</span></a>
               </li>
-              <li class="{{(request()->is('roles')) ? 'active' : '' }}"><a class="{{(request()->is('roles')) ? 'active' : '' }}" href="{{ url('roles') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">Role List</span></a>
+              <li class="{{(request()->is('roles')) ? 'active' : '' }}"><a class="{{(request()->is('roles')) ? 'active' : '' }}" href="{{ url('roles') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">{{ __('t.Role List') }}</span></a>
               </li>              
             </ul>
           </div>
         </li>
+
         <li class="active bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">import_contacts</i><span class="menu-title" data-i18n="Dashboard">Invoice</span><span class="badge badge pill orange float-right mr-10">3</span></a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li class="active"><a class="active" href="dashboard-modern.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">Add New Invoice</span></a>
+              <li class="active"><a class="active" href="{{ url('/invoices/add') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Add New Invoice') }}</span></a>
               </li>
-              <li><a href="dashboard-ecommerce.html"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">Invoice List</span></a>
+              <li><a href="{{ url('/invoices/list') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">{{ __('t.Invoice List') }}</span></a>
               </li>              
             </ul>
           </div>
         </li>
+        
     <!-- end --->
 
     {{-- Foreach menu item starts --}}
