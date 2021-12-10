@@ -1,7 +1,7 @@
 <?php // Code within app\Helpers\Helper.php
 
 namespace App\Helpers;
-
+use App\Models\UserType;
 use Config;
 
 class Helper
@@ -202,6 +202,23 @@ class Helper
                 }
             }
         }
+    }
+
+    public static function getUserTypes(){
+        $rows = UserType::select('id','name')->where('status', 1)->get();
+        $DATA[''] = '--Select--';
+        foreach ($rows as $key => $row) {
+            $DATA[ $row->id ] = $row->name;
+        }
+        return $DATA;
+    }
+
+    public static function getStatus(){
+        return [
+            '' => '-- select --',
+            '1' => 'Active',
+            '0' => 'Inactive'
+        ]; 
     }
 
 

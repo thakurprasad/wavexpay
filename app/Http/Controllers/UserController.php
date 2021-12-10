@@ -62,8 +62,14 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
+            'roles' => 'required',
+            //'user_type' => 'required|gt:2',
+            'type' => 'required',
+        ],[
+                'type.required' => 'User Type filed is required',
+                'password.required' => 'Password is required'
+            ]
+        );
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -131,8 +137,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+        return back()->with('success', 'User updated successfully');
     }
     
     /**

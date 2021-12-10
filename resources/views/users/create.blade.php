@@ -24,24 +24,14 @@
         {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 
         @include('alerts.message')
-            @if (count($errors) > 0)
-              <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                   @foreach ($errors->all() as $error)
-                     <li>{{ $error }}</li>
-                   @endforeach
-                </ul>
-              </div>
-            @endif
-
+  
             <div class="row">
 
               <div class="input-field col m4 s6">
                 <i class="material-icons prefix">account_circle</i>
                {!! Form::text('name', null, array('class' => 'form-control validate')) !!}
                 <label for="name">Name</label>
-                 @error('f_name')
+                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -69,6 +59,13 @@
               <div class="input-field col m4 s6">
                 <i class="material-icons prefix">vpn_key</i>
                     {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                <label for="confirm-password">Select Role</label>
+              </div>
+
+
+              <div class="input-field col m4 s6">
+                <i class="material-icons prefix">account_circle</i>
+                    {!! Form::select('type', Helper::getUserTypes(),null, array('class' => 'form-control')) !!}
                 <label for="confirm-password">Select Role</label>
               </div>
               
