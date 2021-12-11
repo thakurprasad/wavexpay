@@ -1,5 +1,5 @@
 #======= theme's gitignore file===========
-/node_modules
+#/node_modules
 #/public/hot
 #/public/storage
 #/public/js
