@@ -136,7 +136,7 @@
       <!-- profile-dropdown-->
       <ul class="dropdown-content" id="profile-dropdown">
         <li>
-          <a class="grey-text text-darken-1" href="#">
+          <a class="grey-text text-darken-1" href="{{ url('merchant-profile') }}">
             <i class="material-icons">person_outline</i>
             Profile
           </a>
@@ -161,10 +161,15 @@
           </a>
         </li>
         <li>
-          <a class="grey-text text-darken-1" href="#">
+          <a class="grey-text text-darken-1" href="{{ route('logout') }}" 
+          onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
             <i class="material-icons">keyboard_tab</i>
-            Logout
+            {{ __('Logout') }}
           </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
         </li>
       </ul>
     </div>

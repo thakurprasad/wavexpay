@@ -18,6 +18,8 @@ npm-debug.log
 yarn-error.log
 supervisord.log
 supervisord.pid
+composer.lock
+package-lock.json
 #====================
 
 /vendor/
