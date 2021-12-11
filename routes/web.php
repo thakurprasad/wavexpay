@@ -31,6 +31,9 @@ Route::get('/page-blank', [PageController::class, 'blankPage']);
 Route::get('/page-collapse', [PageController::class, 'collapsePage']);
 Route::get('/merchant-profile', [PageController::class, 'merchantProfile']);
 
+    Route::get('/', [PageController::class, 'blankPage']);
+    Route::get('/page-blank', [PageController::class, 'blankPage']);
+    Route::get('/page-collapse', [PageController::class, 'collapsePage']);
 
 // locale route
     Route::get('lang/{locale}', [LanguageController::class, 'swap']);
