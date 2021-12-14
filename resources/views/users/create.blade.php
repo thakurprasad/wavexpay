@@ -2,7 +2,7 @@
 @extends('layouts.contentLayoutMaster')
 
 {{-- page title --}}
-@section('title','Page Collapse')
+@section('title',__('t.Users'))
 
 {{-- vendor style --}}
 @section('vendor-style')
@@ -19,18 +19,17 @@
      <div class="col s12 m12 l12">
       <div id="prefixes" class="card card card-default scrollspy">
         <div class="card-content">
-          <h4 class="card-title">Create New User</h4>
+          <h4 class="card-title">{{__('t.Create New User') }}</h4>
           
         {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
 
         @include('alerts.message')
   
             <div class="row">
-
               <div class="input-field col m4 s6">
                 <i class="material-icons prefix">account_circle</i>
                {!! Form::text('name', null, array('class' => 'form-control validate')) !!}
-                <label for="name">Name</label>
+                <label for="name">{{__('t.Name') }}</label>
                  @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

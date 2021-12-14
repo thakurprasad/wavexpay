@@ -70,6 +70,18 @@
             </ul>
           </div>
         </li>
+
+
+        <li class="active bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">import_contacts</i><span class="menu-title" data-i18n="Dashboard">Settlements</span></a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li class="active"><a class="active" href="{{ url('/settlements/done') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Done') }}</span></a>
+              </li>
+              <li><a href="{{ url('/settlements/pending') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">{{ __('t.Pending') }}</span></a>
+              </li>              
+            </ul>
+          </div>
+        </li>
         
     <!-- end --->
 

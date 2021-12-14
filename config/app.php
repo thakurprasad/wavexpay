@@ -180,6 +180,8 @@ return [
          * Laravel 8 User Roles and Permissions Tutorial
          * */
         Spatie\Permission\PermissionServiceProvider::class,
+
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -232,6 +234,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Helper' => App\Helpers\Helper::class,
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

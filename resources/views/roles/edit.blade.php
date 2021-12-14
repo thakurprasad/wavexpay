@@ -2,59 +2,58 @@
 @extends('layouts.contentLayoutMaster')
 
 {{-- page title --}}
-@section('title','Page Collapse')
+@section('title','Edit Role')
+
+{{-- vendor style --}}
+@section('vendor-style')
+<link rel="stylesheet" type="text/css" href="{{asset('vendors/flag-icon/css/flag-icon.min.css')}}">
+@endsection
 
 {{-- page content --}}
 @section('content')
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit Role</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
 
+<div class="section">
+     <!-- Form with icon prefixes -->
+        <div class="col s12 m12 l12">
+          <div id="prefixes" class="card card card-default scrollspy">
+            <div class="card-content">
+              <div class="row">
 
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-        </ul>
-    </div>
-@endif
-
-
+            @include('alerts.message')
 {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+
+              <h2 class="card-title">Update Role</h2>                
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                    <i class="material-icons prefix">vpn_key</i>
+                    {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                    <label for="name">Role Name</label>
+                  </div>
+              </div>
+
+              <div class="row">            
+                <h5>Select Permissions</h5>  
+                   @foreach($permission as $value)
+                       <div class="input-field col m3 s12">
+                              <label class="m5">
+                                <input type="checkbox" name="permission[]" value="{{ $value->id }}" {{  in_array($value->id, $rolePermissions) ? 'checked' : '' }} />
+                                <span>{{ $value->name }}</span>
+                              </label>
+                        </div>
+                    @endforeach
+
+              </div>
+               <div class="col s12 display-flex justify-content-end mt-3">
+                <button type="submit" class="btn cyan waves-effect waves-light right" name="update">
+                  Update Role</button>
+              </div>
+          </div>
+{!! Form::close() !!}
+            </div>
         </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Permission:</strong>
-            <br/>
-            @foreach($permission as $value)
-                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                {{ $value->name }}</label>
-            <br/>
-            @endforeach
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </div>
-{!! Form::close() !!}
+
 
 
 @endsection
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>

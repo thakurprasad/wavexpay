@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $breadcrumbs = [
-            ['link'=>"/users",'name'=>"User"], ['name'=>"Users List"]
+            ['link'=>"/users",'name'=>"Users"], ['name'=>"Users List"]
             ];
 
 
@@ -28,9 +28,6 @@ class UserController extends Controller
 
   // custom body class
         $pageConfigs = ['bodyCustomClass' => 'app-page' , 'pageHeader' => true];
-        //return view('users.index1', ['pageConfigs' => $pageConfigs]);
-
-
         return view('users.index1',['data'=> $data, 'users'=> $data, 'pageConfigs'=>$pageConfigs], ['breadcrumbs'=>$breadcrumbs]);
     }
     
@@ -42,12 +39,10 @@ class UserController extends Controller
     public function create()
     {
     $breadcrumbs = [
-            ['link'=>"/users",'name'=>"User"], ['name'=>"Users Create"]
+            ['link'=>"/users",'name'=>"Users"], ['name'=>"Users Create"]
             ];
-
-        $pageConfigs = ['bodyCustomClass' => 'app-page' , 'pageHeader' => true];
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',['roles'=> $roles , 'pageConfigs'=>$pageConfigs], ['breadcrumbs'=>$breadcrumbs] );
+        return view('users.create',['roles'=> $roles], ['breadcrumbs'=>$breadcrumbs] );
     }
     
     /**

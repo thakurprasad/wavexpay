@@ -2,7 +2,7 @@
 @extends('layouts.contentLayoutMaster') 
 
 {{-- page title --}}
-@section('title','Data Table')
+@section('title','Users')
 
 {{-- vendor styles --}}
 @section('vendor-style')
@@ -36,7 +36,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Created At</th>
-                    <th>Updated At</th>
+                   <!-- <th>Updated At</th>--->
                     <th>Role</th>
                     <th>Action</th>
                   </tr>
@@ -47,7 +47,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at }}</td>
-                    <td>{{ $user->updated_at }}</td>
+                  <!--  <td>{{ $user->updated_at }}</td>-->
                     <td>
                      @if(!empty($user->getRoleNames()))
                         @foreach($user->getRoleNames() as $v)
@@ -56,11 +56,16 @@
                       @endif
                     </td>
                     <td>
-                       <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                       <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+
+                       <a href="{{ route('users.show',$user->id) }}" class="mb-6 btn-floating waves-effect waves-light purple lightrn-1"><i class="material-icons left">remove_red_eye</i></a>
+                       
+                       <a href="{{ route('users.edit',$user->id) }}" class="mb-6 btn-floating waves-effect waves-light cyan"><i class="material-icons left">edit</i></a>
+
+                      {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                        <button class="mb-6 btn-floating waves-effect waves-light red lightrn-1">
+                          <i class="material-icons left">delete_sweep</i>
+                        </button>
+                      {!! Form::close() !!}
 
                     </td>
                   </tr>
