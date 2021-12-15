@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 use App\Models\UserType;
+use App\Models\Setting;
 use Config;
 
 class Helper
@@ -219,6 +220,15 @@ class Helper
             '1' => 'Active',
             '0' => 'Inactive'
         ]; 
+    }
+
+    public static function getSetting($type, $key){
+        $s = Setting::select('value')->where(['type'=> $type, 'key'=>$key, 'status'=> 1])->first();
+        if($s){
+            return $s->value;
+        }else{
+            return '';
+        }
     }
 
 

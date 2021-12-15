@@ -15,7 +15,6 @@
 <div class="section">
      <!-- Form with icon prefixes -->
 
-
      <div class="col s12 m12 l12">
       <div id="prefixes" class="card card card-default scrollspy">
         <div class="card-content">
