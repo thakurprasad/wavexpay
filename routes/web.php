@@ -96,3 +96,5 @@ Route::group(['middleware' => ['auth']], function() {
     // only for testing...
     Route::get('/return_url', [GlobalController::class, 'cashfree_return_url']);
     Route::get('/notify_url_webhook', [GlobalController::class, 'cashfree_notify_url']);
+    Route::get('/pay/{order_token}', [GlobalController::class, 'payment_link']);
+    Route::get('/pay2/{order_token}', [GlobalController::class, 'payment_link2']);
