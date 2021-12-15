@@ -44,7 +44,7 @@ class GlobalController extends Controller
     }
 
     public function payment_link($order_token){
-        $apiURL = "https://payments-test.cashfree.com/order/#".$order_token;
+        echo $apiURL = "https://payments-test.cashfree.com/order/#".$order_token;
 
       $curl = curl_init();
 
@@ -68,7 +68,7 @@ class GlobalController extends Controller
     }
 
     public function payment_link2($order_token){
-        $apiURL = "https://payments-test.cashfree.com/order/#".$order_token;
+       echo $apiURL = "https://payments-test.cashfree.com/order/#".$order_token;
 
         $endpoint = $apiURL; // "http://my.domain.com/test.php";
         $client = new \GuzzleHttp\Client();
