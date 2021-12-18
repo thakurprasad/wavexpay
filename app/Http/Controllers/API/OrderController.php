@@ -38,8 +38,9 @@ class OrderController extends BaseController
 
     public function create(Request $request){
          $data = $request->getContent();
-         //return $request->headers->all();
-      
+         echo  $request->header('x-client-secret');
+        // return $request->header();
+      exit();
         $REQ_DATA = json_decode($data, true);
        // echo $POST_API_DATA->order_amount;
        // echo $POST_API_DATA->customer_details->customer_phone;
