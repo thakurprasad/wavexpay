@@ -22,23 +22,21 @@ use App\Http\Controllers\SettingController;
 
 // Page Route
 Route::middleware(['auth'])->group(function () {
+
 Route::get('/', [PageController::class, 'blankPage']);
 
 
 
-Route::get('/page-blank', [PageController::class, 'blankPage']);
-Route::get('/page-collapse', [PageController::class, 'collapsePage']);
 
-Route::get('/page-blank', [PageController::class, 'blankPage']);
-Route::get('/page-collapse', [PageController::class, 'collapsePage']);
-Route::get('/merchant-profile', [PageController::class, 'merchantProfile']);
-
+    Route::get('/', [PageController::class, 'blankPage']);
+    Route::get('/page-blank', [PageController::class, 'blankPage']);
+    Route::get('/page-collapse', [PageController::class, 'collapsePage']);
+    Route::get('/merchant-profile', [PageController::class, 'merchantProfile']);
 
 // locale route
     Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 });
 Auth::routes(['verify' => true]);
-
 
 Route::group(['middleware' => ['auth']], function() {
     /**
@@ -108,5 +106,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/pay2/{order_token}', [GlobalController::class, 'payment_link2']);
 
     Route::get('/paymentlinks/order/{order_token}', [GlobalController::class, 'payment_link2']);
-
-
