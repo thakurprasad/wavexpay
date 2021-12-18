@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GlobalController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('settlements/done', function(){ return view('settlements.done'); } );
     
 
+    /**
+     * Configration setting 
+     * */
+    Route::get('/settings', [SettingController::class, 'index']);    
+    Route::post('/settings/update/{id}', [SettingController::class, 'update']);    
+
+
 });
 
     // only for testing...
@@ -98,3 +106,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/notify_url_webhook', [GlobalController::class, 'cashfree_notify_url']);
     Route::get('/pay/{order_token}', [GlobalController::class, 'payment_link']);
     Route::get('/pay2/{order_token}', [GlobalController::class, 'payment_link2']);
+
+    Route::get('/paymentlinks/order/{order_token}', [GlobalController::class, 'payment_link2']);
+
+

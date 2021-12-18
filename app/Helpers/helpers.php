@@ -7,6 +7,11 @@ use Config;
 
 class Helper
 {
+
+    public static function db_switch($db = ''){
+        return $db;
+    }
+
     public static function applClasses()
     {
         // default data value

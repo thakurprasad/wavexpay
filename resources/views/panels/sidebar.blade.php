@@ -60,13 +60,23 @@
           </div>
         </li>
 
-        <li class="active bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">import_contacts</i><span class="menu-title" data-i18n="Dashboard">Invoice</span><span class="badge badge pill orange float-right mr-10">3</span></a>
+        <li class="{{(request()->is('invoices/*')) ? 'active' : '' }} bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">import_contacts</i><span class="menu-title" data-i18n="Dashboard">Invoice</span><span class="badge badge pill orange float-right mr-10">3</span></a>
           <div class="collapsible-body">
             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-              <li class="active"><a class="active" href="{{ url('/invoices/add') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Add New Invoice') }}</span></a>
+              <li class="active"><a href="{{ url('/invoices/add') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Add New Invoice') }}</span></a>
               </li>
               <li><a href="{{ url('/invoices/list') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="eCommerce">{{ __('t.Invoice List') }}</span></a>
               </li>              
+            </ul>
+          </div>
+        </li>
+
+         <li class="{{(request()->is('settings/*')) ? 'active' : '' }} bold"><a class="collapsible-header waves-effect waves-cyan " href="JavaScript:void(0)"><i class="material-icons">brightness_low</i><span class="menu-title" data-i18n="Dashboard">{{ __('t.Settings') }}</span></a>
+          <div class="collapsible-body">
+            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+              <li class="{{(request()->is('settings')) ? 'active' : '' }}">
+                <a class="{{(request()->is('settings')) ? 'active' : '' }}" href="{{ url('settings') }}"><i class="material-icons">radio_button_unchecked</i><span data-i18n="Modern">{{ __('t.Configuration') }}</span></a>
+              </li>            
             </ul>
           </div>
         </li>

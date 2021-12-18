@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\BaseController as BaseController;
+use App\Models\Order;
 use Validator;
+use App\Http\Resources\Order as OrderResource;
+use Illuminate\Support\Facades\Storage;
+use Helper;
+use Illuminate\Support\Facades\DB; 
 
-class OrderController extends Controller
+use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
+   
+
+class OrderController extends BaseController
 {
     
 
-     private $headers = array();
+    private $headers = array();
     private $base_url = '';
 
     function __construct()
@@ -26,31 +34,77 @@ class OrderController extends Controller
                       ];
         $this->base_url = Helper::getSetting('cashfree', 'test_base_url');
     }
-    
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function create(Request $request){
+         $data = $request->getContent();
+         //return $request->headers->all();
+      
+        $REQ_DATA = json_decode($data, true);
+       // echo $POST_API_DATA->order_amount;
+       // echo $POST_API_DATA->customer_details->customer_phone;
+
+        /*
+        $ORDER['merchent_id'] = $REQ_DATA-> ;
+        $ORDER['pg'] = $REQ_DATA-> ;
+        $ORDER['domain'] = $REQ_DATA-> ;
+        $ORDER['order_id'] = $REQ_DATA-> ;
+        $ORDER['amount'] = $REQ_DATA-> ;
+        $ORDER['product_name'] = $REQ_DATA-> ;
+        $ORDER['product_details'] = $REQ_DATA-> ;
+        $ORDER['customer_name'] = $REQ_DATA-> ;
+        $ORDER['customer_mobile'] = $REQ_DATA-> ;
+        $ORDER['customer_email'] = $REQ_DATA-> ;
+        $ORDER['return_url'] = $REQ_DATA-> ;
+        $ORDER['notify_url'] = $REQ_DATA-> ;
+        $ORDER['order_expiry_time'] = $REQ_DATA-> ;
+        $ORDER['order_token'] = $REQ_DATA-> ;
+        $ORDER['response'] = $REQ_DATA-> ;
+        $ORDER['created_at'] = $REQ_DATA-> ;
+        $ORDER['updated_at'] = $REQ_DATA-> ;
+        $payment =[];// Payment::create($DATA);   */
+
+        $apiURL = $this->base_url . '/orders'; 
+        //$this->headers;   
+        $response = Http::withHeaders($this->headers)->post($apiURL, $REQ_DATA);
+        $statusCode = $response->status();
+        $resp =  $response->getBody();
+        if($resp){
+            $data  = json_decode($resp);
+        }
+        return $this->sendResponse($data, 'Payment successfully.');
+        
+        
+    }
+
+    public function test_not_used(Request $request)
     {
-      return $input = $request->all();
-      /*return  $content = request()->getContent();
+        var_dump($request->input());
+        $input = $request->all();
+        var_dump($input);
+        exit();
+        $content = $request->getContent();
+        $content2 = request()->getContent();
+        var_dump($content);
+        var_dump($content2);
+        exit();
         $validator = Validator::make($input, [
-            'order_amount' => 'required',
-            'order_currency' => 'required',
-           //'customer_details' => 'required',
+            'order_id'          => 'required',
+            'order_currency'     => 'required',                        
+            'order_amount'      => 'required|numeric',
+            'customer_details'  => 'required',
+            'order_meta'        => 'required',
+           //'order_expiry_time' => 'required' 
         ]);
    
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+         //   return $this->sendError('Validation Error.', $validator->errors());       
         }
 
         $arr = json_decode($content);
-        return $arr;
-        $DATA['merchant_id']    =  $arr->merchant_id;*/
+        //return $arr;
+        echo "line 62: " . $arr->order_amount;
+        exit();
 /*
         $DATA['merchent_id']    =  $arr->;
         $DATA['pg']             =  $arr->;
@@ -83,37 +137,8 @@ class OrderController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        //
-    }
+    
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Order $order)
-    {
-        //
-    }
+
 }
