@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::middleware('api')->group( function () {
+Route::middleware(['api', 'merchant'])->group( function () {
 
  
 //Route::get('v1/order', [OrderController::class, 'store']);

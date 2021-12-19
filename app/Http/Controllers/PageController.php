@@ -24,8 +24,6 @@ class PageController extends Controller
         return view('pages.page-collapse', ['pageConfigs' => $pageConfigs], ['breadcrumbs' => $breadcrumbs]);
     }
 
-<<<<<<< HEAD
-
     public function invoiceList()
     {
         // custom body class
@@ -52,8 +50,6 @@ class PageController extends Controller
     }
 
 
-=======
->>>>>>> origin/dev_karim
     public function merchantProfile()
     {
         $breadcrumbs = [

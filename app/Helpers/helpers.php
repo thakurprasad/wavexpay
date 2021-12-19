@@ -3,7 +3,11 @@
 namespace App\Helpers;
 use App\Models\UserType;
 use App\Models\Setting;
+use App\Models\MerchantApiKey;
 use Config;
+use Carbon\Carbon;
+
+use App\Http\Controllers\API\BaseController as BaseController;
 
 class Helper
 {
@@ -227,6 +231,11 @@ class Helper
         ]; 
     }
 
+    /**
+     * call: Helper::getSetting('cashfree', 'x-api-version')
+     * Return - value
+     * 
+     * */
     public static function getSetting($type, $key){
         $s = Setting::select('value')->where(['type'=> $type, 'key'=>$key, 'status'=> 1])->first();
         if($s){
@@ -234,6 +243,72 @@ class Helper
         }else{
             return '';
         }
+    }
+
+
+
+    /**
+     * Return PG header list according payment getway
+     * 
+     * */
+    public static function getHeaders($merchant_id){
+        $merhant = MerchantApiKey::where('merchant_id', $merchant_id)->first();
+        $headers = array();
+        if($merhant){
+            if($merhant->pg == 'cashfree'){
+                    $headers =  [
+                        'Accept'        => 'application/json',
+                        'Content-Type'  => 'application/json',
+                        'x-api-version' => Helper::getSetting('cashfree', 'x-api-version'),
+                        'x-client-id'   => Helper::getSetting('cashfree', 'x-client-id'),
+                        'x-client-secret'=> Helper::getSetting('cashfree', 'x-client-secret')
+                      ];
+            }elseif($merhant->pg == 'razorpay'){
+                  $headers =  [
+                        'Accept'        => '*/*',
+                        'Content-Type'  => 'application/json',
+                        'x-client-id'   => Helper::getSetting('razorpay', 'x-client-id'),
+                        'x-client-secret'=> Helper::getSetting('razorpay', 'x-client-secret')
+                      ];
+            }else{
+                  $headers =  [
+                        'Accept'        => 'application/json',
+                        'Content-Type'  => 'application/json',
+                        'x-api-version' => Helper::getSetting('cashfree', 'x-api-version'),
+                        'x-client-id'   => Helper::getSetting('cashfree', 'x-client-id'),
+                        'x-client-secret'=> Helper::getSetting('cashfree', 'x-client-secret')
+                      ];
+            }
+            return $headers;
+        }else{
+            return BaseController::sendError('Invalid merhant or inactive merhant account.'); 
+        }
+
+    }
+
+    /**
+     * $pg => cashfree | razorpay
+     * $url_type => test | live
+     * return url:
+     * cashfree test : https://sandbox.cashfree.com/pg 
+     * cashfree live : https://api.cashfree.com/pg
+     * razorpay test : https://api.razorpay.com/v1
+     * razorpay live : https://api.razorpay.com/v1 
+     * 
+     * */
+    public static function getBaseUrl($pg = 'cashfree', $url_type = 'test_base_url'){
+
+          return $base_url = Helper::getSetting($pg, $url_type);
+    }
+
+    public static function expiry_time($hours=1){        
+        //$datetime = Carbon::now('UTC')->addHour($hours)->format('Y-m-d H:i:s');
+        $datetime = Carbon::now()->addHour($hours)->format('Y-m-d H:i:s');
+        return date(DATE_ISO8601, strtotime( $datetime ));
+    }
+
+    public static function expiry_time_sql($hours=1){
+       return $datetime = Carbon::now()->addHour($hours)->format('Y-m-d H:i:s');
     }
 
 
